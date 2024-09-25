@@ -22,4 +22,9 @@ public class DemoController {
     model.addAttribute("data4", "매우 좋습니다."); // model 설정
     return "hello2";
     }
+
+    @GetMapping("/about_detailed")
+    public String about() {
+        return "about_detailed";
+    }
 }
