@@ -1,6 +1,12 @@
 (function ($) {
     "use strict";
 
+    function confirmClose(){
+        if(confirm('창을 닫으시겠습니까?')){
+            window.location.href = '/';
+        }
+    }
+
     // Spinner
     var spinner = function () {
         setTimeout(function () {
@@ -119,6 +125,10 @@
         items: 1,
         dots: true,
         loop: true,
+    });
+
+    $('.close-page').click(function() {
+        confirmClose();
     });
     
 })(jQuery);
