@@ -49,7 +49,8 @@ public class BlogController {
         if(list.isPresent()){
             model.addAttribute("article", list.get()); // 존재하면 Article 객체를 모델에 추가
         } else {
-            // 처리할 로직 추가 (예시 : 오류 페이지로 리다이렉트, 예외 처리 등)
+            // 처리할 로직 추가 (예: 오류 페이지로 리다이렉트, 예외 처리 등)
+            return "/error_page/article_error"; // 오류 처리 페이지로 연결(이름 수정됨)
         }
         return "article_edit"; // .HTML 연결
     }
