@@ -40,4 +40,8 @@ public class BlogService {
             blogRepository.save(article); // Article 객체에 저장
         });
     }
+
+    public void delete(Long id) {
+        blogRepository.deleteById(id);
+    }
 }
