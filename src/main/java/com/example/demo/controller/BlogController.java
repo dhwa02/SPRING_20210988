@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +28,14 @@ public class BlogController {
     private BlogService blogService;
 
     @GetMapping("/board_list") // 새로운 게시판 링크 지정
-    public String board_list(Model model, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "") String keyword) {
+    public String board_list(Model model,
+    @RequestParam(defaultValue = "0") int page,
+    @RequestParam(defaultValue = "3") int pageSize,
+    @RequestParam(defaultValue = "") String keyword) {
         PageRequest pageable = PageRequest.of(page, 3); // 한 페이지의 게시글 수
         Page<Board> list; // Page를 반환
+        
+        int startNum = (page * pageSize) + 1;
 
         if (keyword.isEmpty()) {
             list = blogService.findAll(pageable); // 기본 전체 출력(키워드 x)
@@ -42,6 +46,7 @@ public class BlogController {
         model.addAttribute("totalPages", list.getTotalPages()); // 페이지 크기
         model.addAttribute("currentPage", page); // 페이지 번호
         model.addAttribute("keyword", keyword); // 키워드
+        model.addAttribute("startNum", startNum);
         return "board_list"; // .HTML 연결
 }
 
