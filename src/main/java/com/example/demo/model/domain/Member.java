@@ -31,6 +31,9 @@ public class Member {
     @Column(name = "address", nullable = false)
     private String address = "";
 
+    public Member() {
+    }
+
     @Builder // 생성자에 빌더 패턴 적용(불변성)
     public Member(String name, String email, String password, String age, String mobile, String address){
         this.name = name;
