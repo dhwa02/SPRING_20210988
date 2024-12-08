@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import com.example.demo.model.domain.Member;
 import com.example.demo.model.service.MemberService;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 import com.example.demo.model.service.AddMemberRequest;
@@ -47,9 +50,14 @@ public class MemberController {
     }
 
     @PostMapping("/api/login_check") // 로그인(아이디, 패스워드) 체크
-    public String checkMembers(@ModelAttribute AddMemberRequest request, Model model) {
+    public String checkMembers(@ModelAttribute AddMemberRequest request, Model model, HttpSession session) {
     try {
         Member member = memberService.loginCheck(request.getEmail(), request.getPassword()); // 패스워드 반환
+        String sessionId = UUID.randomUUID().toString();
+        String email = request.getEmail();
+        session.setAttribute("userId", sessionId);
+        session.setAttribute("email", email);
+        
         model.addAttribute("member", member); // 로그인 성공 시 회원 정보 전달
         return "redirect:/board_list"; // 로그인 성공 후 이동할 페이지
 } catch (IllegalArgumentException e) {

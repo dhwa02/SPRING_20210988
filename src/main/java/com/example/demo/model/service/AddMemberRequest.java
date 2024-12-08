@@ -18,7 +18,7 @@ public class AddMemberRequest {
     @Email(message = "이메일 형식이 올바르지 않습니다.")
     @NotBlank(message = "이메일 입력은 필수입니다.")
     private String email;
-    @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\\\d).{8,25}$")
+    @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d).{8,25}$")
     private String password;
     @Min(19) // 19 이상
     @Max(90) // 90 이하
