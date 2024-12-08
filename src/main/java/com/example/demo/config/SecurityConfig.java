@@ -19,7 +19,7 @@ public class SecurityConfig {
                 response.setHeader("X-XSS-Protection", "1; mode=block"); // XSS-Protection 헤더 설정
             })
             )
-            // .csrf(withDefaults())
+            .csrf(csrf -> csrf.disable())
             .sessionManagement(session -> session
                 .invalidSessionUrl("/session-expired") // 세션 만료시 이동 페이지
                 .maximumSessions(1) // 사용자 별 세션 최대 수

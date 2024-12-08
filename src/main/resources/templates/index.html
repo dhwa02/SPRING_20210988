@@ -563,24 +563,21 @@ w                    <h1 class="display-5 mb-5">기술 & 경험</h1>
         <div class="container py-5">
             <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="col-lg-6">
-                    <h1 class="display-5 mb-0">Let's Work Together</h1>
-                </div>
-                <div class="col-lg-6 text-lg-end">
-                    <a class="btn btn-primary py-3 px-5" href="">Say Hello</a>
+                    <h1 class="display-4 mb-0">저와 함께 일하고싶은사람은 연락주세요.</h1>
                 </div>
             </div>
             <div class="row g-5">
                 <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <p class="mb-2">My office:</p>
-                    <h3 class="fw-bold">123 Street, New York, USA</h3>
+                    <p class="mb-2">성결대학교</p>
+                    <h3 class="fw-bold">경기도 안양시 만안구 성결대학로 53</h3>
                     <hr class="w-100">
-                    <p class="mb-2">Call me:</p>
-                    <h3 class="fw-bold">+012 345 6789</h3>
+                    <p class="mb-2">저의 전화번호 입니다.</p>
+                    <h3 class="fw-bold">010-9094-xxxx</h3>
                     <hr class="w-100">
-                    <p class="mb-2">Mail me:</p>
-                    <h3 class="fw-bold">info@example.com</h3>
+                    <p class="mb-2">저의 이메일주소 입니다.</p>
+                    <h3 class="fw-bold">dhwa02@example.com</h3>
                     <hr class="w-100">
-                    <p class="mb-2">Follow me:</p>
+                    <p class="mb-2">저를 팔로우하세요!</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-square btn-primary me-2" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-square btn-primary me-2" href=""><i class="fab fa-facebook-f"></i></a>
@@ -589,35 +586,29 @@ w                    <h1 class="display-5 mb-5">기술 & 경험</h1>
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
-                    <form>
+
+                    <form action="/upload-email" method="post">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                    <label for="name">Your Name</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                    <label for="email">Your Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                                    <label for="email">이메일</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                    <label for="subject">Subject</label>
+                                    <input type="text" class="form-control" id="subject" name = "subject" placeholder="subject" required>
+                                    <label for="message">메일 제목</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                    <label for="message">Message</label>
+                                    <textarea class="form-control" placeholder="message here" id="message" name="message" style="height: 100px" required></textarea>
+                                    <label for="message">요청 메시지</label>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
+                                <button class="btn btn-primary py-3 px-5" type="submit">메일 보내기 (서버 업로드)</button>
                             </div>
                         </div>
                     </form>
