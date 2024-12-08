@@ -37,6 +37,7 @@ public class BlogController {
     HttpSession session) {
         String userId = (String) session.getAttribute("userId");
         String email = (String) session.getAttribute("email");
+        System.out.println("현재 로그인한 이메일: " + email);  // 로그 출력
         
         if(userId == null){
             return "redirect:/member_login";
@@ -70,9 +71,10 @@ public class BlogController {
     // }
  
     @GetMapping("/board_view/{id}") // 게시판 링크 지정
-    public String board_view(Model model, @PathVariable Long id) {
+    public String board_view(Model model, @PathVariable Long id, HttpSession session) {
         Optional<Board> list = blogService.findById(id); // 선택한 게시판 글
-
+        String email = (String) session.getAttribute("email");
+        model.addAttribute("email", email);
         if (list.isPresent()) {
         model.addAttribute("boards", list.get()); // 존재할 경우 실제 Article 객체를 모델에 추가
         } else {
@@ -108,7 +110,12 @@ public class BlogController {
     }
 
     @PostMapping("/api/boards")
-    public String addBoard(@ModelAttribute AddBoardRequest request) {
+    public String addBoard(HttpSession session, @ModelAttribute AddBoardRequest request) {
+        String email = (String) session.getAttribute("email");
+        if(email != null){
+            request.setUser(email); // 사용자 ID를 요청 객체에 설정
+        }
+        
         blogService.save(request);
         return "redirect:/board_list";
     }
