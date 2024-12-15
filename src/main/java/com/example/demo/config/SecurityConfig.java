@@ -22,8 +22,8 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .sessionManagement(session -> session
                 .invalidSessionUrl("/session-expired") // 세션 만료시 이동 페이지
-                .maximumSessions(1) // 사용자 별 세션 최대 수
-                .maxSessionsPreventsLogin(true) // 동시 세션 제한
+                .maximumSessions(3) // 사용자 별 세션 최대 수 (3으로 제한)
+                .maxSessionsPreventsLogin(false) // 동시 로그인을 허용함
             );
         return http.build(); // 필터 체인을 통해 보안설정(HttpSecurity)을 반환
     }
